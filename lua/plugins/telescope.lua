@@ -12,6 +12,7 @@ return {
 		{ "<leader>fo", mode = "n", desc = "Find Old Files" },
 		{ "<leader><leader>", mode = "n", desc = "Find Buffers" },
 		{ "<leader>fg", mode = "n", desc = "File grep" },
+		{ "<leader>ls", mode = "n", desc = "LSP Symbols" },
 	},
 	config = function()
 		require("telescope").setup({
@@ -27,6 +28,7 @@ return {
 		vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 		vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles)
 		vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
+		vim.keymap.set("n", "<leader>ls", require("telescope.builtin").lsp_document_symbols)
 		vim.keymap.set("n", "<leader><leader>", require("telescope.builtin").buffers)
 	end,
 }
