@@ -15,6 +15,8 @@ return {
         keymap_overrides = {
           -- lua magic patterns must be escaped with `%`, sorry, I'll fix this one day
           -- watch out for emojis as they are double width
+          ['HMR_SCLN'] = 'win/;',
+
           ['HMR_A'] = 'win/a',
           ['HMR_S'] = 'alt/s',
           ['HMR_D'] = 'sft/d',
@@ -23,7 +25,6 @@ return {
           ['HMR_J'] = 'ctl/j',
           ['HMR_K'] = 'sft/k',
           ['HMR_L'] = 'alt/l',
-          ['HMR_;'] = 'win/;',
         },
       },
     })
