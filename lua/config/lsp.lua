@@ -3,18 +3,29 @@ local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
 
-lspconfig.clangd.setup({
+local clangd_driver = vim.env.QUERY_DRIVER
+
+local cmd = {
+	"clangd",
+	"--background-index",
+	"-j=12",
+}
+
+if clangd_driver and clangd_driver ~= "" then
+	table.insert(cmd, "--query-driver=" .. clangd_driver)
+end
+
+require("lspconfig").clangd.setup({
 	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	on_attach = on_attach,
-	cmd = {
-		"clangd",
-		"--background-index",
-		"-j=12",
-	},
+	cmd = cmd,
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "ino" },
 })
 
 lspconfig.nixd.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_attach = on_attach,
+
 	cmd = { "nixd" },
 	settings = {
 		nixd = {
@@ -23,22 +34,27 @@ lspconfig.nixd.setup({
 			},
 			options = {
 				nixos = {
-					expr = '(builtins.getFlake "~/nix-config/").nixosConfigurations.valinor.options',
+					expr = '(builtins.getFlake "/home/ironlung/nix-config/").nixosConfigurations.valinor.options',
 				},
 				home_manager = {
-					expr = '(builtins.getFlake "~/nix-config").homeConfigurations."ironlung@valinor".options',
+					expr = '(builtins.getFlake "/home/ironlung/nix-config").homeConfigurations."ironlung@valinor".options',
 				},
 			},
 		},
 	},
 })
 
-lspconfig.basedpyright.setup({
+-- For pylsp:
+lspconfig.pylsp.setup({
 	settings = {
-		basedpyright = {
-			diagnosticSeverityOverrides = {
-				reportUnknownMemberType = "none",
-				reportUninitializedInstanceVariable = "none",
+		pylsp = {
+			plugins = {
+				black = { enabled = true }, -- Formatter
+				pylint = { enabled = true }, -- Linter
+				pyflakes = { enabled = false },
+				yapf = { enabled = false },
+				autopep8 = { enabled = false },
+				ruff = { enabled = true },
 			},
 		},
 	},
