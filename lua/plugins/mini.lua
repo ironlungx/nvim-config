@@ -2,13 +2,13 @@ return {
 	"echasnovski/mini.nvim",
 	enabled = true,
 	config = function()
-		local statusline = require("mini.statusline")
-		statusline.setup({ use_icons = true })
+		-- local statusline = require("mini.statusline")
+		-- statusline.setup({ use_icons = true })
 		vim.o.laststatus = 3
 
 		require("mini.pairs").setup({})
-    require("mini.git").setup({})
-    require("mini.surround").setup({})
+		require("mini.git").setup({})
+		require("mini.surround").setup({})
 		require("mini.starter").setup({
 			header = [[┌─────────────────────────────────────────────────────────────────┐
 │                     ,                                           │
