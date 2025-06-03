@@ -22,6 +22,11 @@ require("lspconfig").clangd.setup({
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "ino" },
 })
 
+lspconfig.rust_analyzer.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_attach = on_attach,
+})
+
 lspconfig.nixd.setup({
 	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	on_attach = on_attach,
@@ -46,6 +51,8 @@ lspconfig.nixd.setup({
 
 -- For pylsp:
 lspconfig.pylsp.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_attach = on_attach,
 	settings = {
 		pylsp = {
 			plugins = {
@@ -60,8 +67,10 @@ lspconfig.pylsp.setup({
 	},
 })
 
-lspconfig.ruff.setup({})
-lspconfig.ts_ls.setup({})
+lspconfig.ruff.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_attach = on_attach,
+})
 
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
