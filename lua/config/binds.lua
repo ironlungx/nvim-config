@@ -36,5 +36,3 @@ end, { desc = "Toggle Word Wrap" })
 
 vim.keymap.set("n", "<M-j>", ":bprev<CR>", { silent = true, desc = "Goto previous buffer"})
 vim.keymap.set("n", "<M-k>", ":bnext<CR>", { silent = true, desc = "Goto next buffer"})
-
-vim.keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
