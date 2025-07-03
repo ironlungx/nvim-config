@@ -83,5 +83,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.opt.conceallevel = 1
+
 require("config.lazy")
 require("config.binds")
+
