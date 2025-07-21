@@ -4,13 +4,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.shortmess:append("c")
 
 local lspkind = require("lspkind")
-lspkind.init({
-	symbol_map = {
-		Copilot = "",
-	},
-})
-
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+lspkind.init({})
 
 local kind_formatter = lspkind.cmp_format({
 	mode = "symbol_text",
@@ -21,8 +15,6 @@ local kind_formatter = lspkind.cmp_format({
 		path = "[path]",
 		luasnip = "[snip]",
 		gh_issues = "[issues]",
-		tn = "[TabNine]",
-		eruby = "[erb]",
 	},
 })
 
@@ -38,8 +30,9 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "buffer" },
-    { name = 'nvim_lsp_signature_help' },
+		{ name = "nvim_lsp_signature_help" },
 	},
+
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -50,8 +43,9 @@ cmp.setup({
 			}),
 			{ "i", "c" }
 		),
+		["<C-Space>"] = cmp.mapping.complete(),
 	},
-	-- Enable luasnip to handle snippet expansion for nvim-cmp
+
 	snippet = {
 		expand = function(args)
 			vim.snippet.expand(args.body)
@@ -59,7 +53,7 @@ cmp.setup({
 	},
 
 	formatting = {
-		fields = { "abbr", "kind", },
+		fields = { "abbr", "kind" },
 		expandable_indicator = true,
 		format = function(entry, vim_item)
 			-- Lspkind setup for icons
@@ -68,12 +62,16 @@ cmp.setup({
 		end,
 	},
 
+	view = {
+		entries = "custom",
+	},
+
 	sorting = {
 		priority_weight = 2,
 		comparators = {
 			-- Below is the default comparitor list and order for nvim-cmp
 			cmp.config.compare.offset,
-			-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+			cmp.config.compare.scopes,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
 			cmp.config.compare.recently_used,
@@ -84,6 +82,5 @@ cmp.setup({
 			cmp.config.compare.order,
 		},
 	},
-	window = { },
+	window = {},
 })
-
