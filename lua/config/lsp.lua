@@ -15,12 +15,12 @@ if clangd_driver and clangd_driver ~= "" then
 	table.insert(cmd, "--query-driver=" .. clangd_driver)
 end
 
---[[ require("lspconfig").clangd.setup({
+require("lspconfig").clangd.setup({
 	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	on_attach = on_attach,
 	cmd = cmd,
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "ino" },
-}) ]]
+})
 
 lspconfig.rust_analyzer.setup({
 	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
