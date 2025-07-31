@@ -22,12 +22,12 @@ local cmp = require("cmp")
 
 cmp.setup({
 	sources = {
+		{ name = "nvim_lsp" },
 		{
 			name = "lazydev",
 			-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
 			group_index = 0,
 		},
-		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
@@ -70,13 +70,13 @@ cmp.setup({
 		priority_weight = 2,
 		comparators = {
 			-- Below is the default comparitor list and order for nvim-cmp
+			cmp.config.compare.recently_used,
+			cmp.config.compare.kind,
 			cmp.config.compare.offset,
 			cmp.config.compare.scopes,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
-			cmp.config.compare.recently_used,
 			cmp.config.compare.locality,
-			cmp.config.compare.kind,
 			cmp.config.compare.sort_text,
 			cmp.config.compare.length,
 			cmp.config.compare.order,
