@@ -1,4 +1,4 @@
-return {
+--[[ return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
 	dependencies = {
@@ -31,4 +31,6 @@ return {
 		vim.keymap.set("n", "<leader>ls", require("telescope.builtin").lsp_document_symbols)
 		vim.keymap.set("n", "<leader><leader>", require("telescope.builtin").buffers)
 	end,
-}
+} ]]
+
+return {}
