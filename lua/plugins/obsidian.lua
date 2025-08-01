@@ -16,12 +16,4 @@ return {
 		"nvim-lua/plenary.nvim",
 		"OXY2DEV/markview.nvim",
 	},
-	opts = {
-		workspaces = {
-			{
-				name = "history",
-				path = "~/Documents/School/History/",
-			},
-		},
-	},
 }
