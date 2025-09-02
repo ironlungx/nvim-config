@@ -3,7 +3,7 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "c", "lua", "markdown", "markdown_inline", "nix", "cpp", "json", "rust" },
+			ensure_installed = { "c", "lua", "markdown", "markdown_inline", "nix", "cpp", "json", "rust", "jsonc" },
 			auto_install = false,
 			highlight = {
 				enable = true,

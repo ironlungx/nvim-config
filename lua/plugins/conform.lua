@@ -23,10 +23,12 @@ return {
 			lua = { "stylua" },
 			json = { "fixjson" },
 			jsonc = { "fixjson" },
+			rust = { "rustfmt" },
 		},
 	},
 	init = function()
 		-- If you want the formatexpr, here is the place to set it
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+		vim.cmd("autocmd FileType rust setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab")
 	end,
 }
