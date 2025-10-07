@@ -4,3 +4,7 @@
 
 vim.g.snacks_aniate = false
 vim.g.lazyvim_check_order = false
+
+vim.opt.clipboard = ""
+
+require("config.lsp")
