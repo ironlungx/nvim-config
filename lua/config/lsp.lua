@@ -14,3 +14,21 @@ vim.lsp.config("nixd", {
 		},
 	},
 })
+
+vim.lsp.enable("pylsp")
+vim.lsp.config("pylsp", {
+	settings = {
+		pylsp = {
+			plugins = {
+				black = { enabled = true }, -- Formatter
+				pylint = { enabled = true }, -- Linter
+				pyflakes = { enabled = false },
+				yapf = { enabled = false },
+				autopep8 = { enabled = false },
+				ruff = { enabled = true },
+			},
+		},
+	},
+})
+
+vim.lsp.enable("ruff")
